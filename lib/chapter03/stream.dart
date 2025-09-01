@@ -1,4 +1,4 @@
-// Future와 다르에 Stream은 지속적으로 값을 반환 받을 때 사용됨
+// Future와 다르게 Stream은 지속적으로 값을 반환 받을 때 사용됨
 // Stream은 한번 listen하면 Stream에 주입되는 모든 값들을 지속적으로 받아옴
 
 import 'dart:async';
