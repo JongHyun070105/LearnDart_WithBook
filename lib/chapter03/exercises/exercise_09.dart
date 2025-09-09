@@ -7,6 +7,28 @@
 
 import 'dart:async';
 
-void main() {
+// Future로 사용자 이름 리스트 가져오기
+Future<List<String>> fetchUserNames() async {
+  await Future.delayed(Duration(seconds: 2));
+  return ['김철수', '이영희', '박민수'];
+}
+
+// Stream으로 각 이름을 순차적으로 처리
+Stream<String> processUsers(List<String> names) async* {
+  for (String name in names) {
+    yield name;
+    await Future.delayed(Duration(seconds: 1));
+  }
+}
+
+void main() async {
   // TODO: 여기에 구현하세요
+  List<String> names = await fetchUserNames();
+  print('사용자 이름 가져오기: $names');
+
+  await for (String name in processUsers(names)) {
+    print('처리 중: $name');
+  }
+
+  print('모든 처리 완료');
 }

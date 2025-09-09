@@ -11,4 +11,19 @@ import 'dart:async';
 
 void main() {
   // TODO: 여기에 구현하세요
+
+  final controller = StreamController.broadcast();
+  final stream = controller.stream;
+
+  final streamListener1 = stream.listen((data) {
+    print('리스너1: $data');
+  });
+
+  final streamListener2 = stream.listen((data) {
+    print('리스너2: $data');
+  });
+
+  controller.sink.add(1);
+  controller.sink.add(2);
+  controller.sink.add(3);
 }

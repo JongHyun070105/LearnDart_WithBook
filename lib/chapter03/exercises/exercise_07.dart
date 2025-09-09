@@ -8,6 +8,22 @@
 
 import 'dart:async';
 
-void main() {
-  // TODO: 여기에 구현하세요
+Stream<int> countStream(int max) async* {
+  for (int i = 1; i <= max; i++) {
+    await Future.delayed(Duration(seconds: 1));
+    yield i;
+  }
+}
+
+void main() async {
+  // 스트림 생성
+  var stream = countStream(10);
+
+  // 스트림의 데이터 처리
+  stream
+      .where((number) => number % 2 == 0)
+      .map((number) => '숫자 $number')
+      .listen((result) {
+        print(result);
+      });
 }
